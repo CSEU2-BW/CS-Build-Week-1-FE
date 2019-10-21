@@ -1,15 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Register() {
+export default function Register(props) {
+	const nameRef = React.createRef();
+	const emailRef = React.createRef();
+	const pass1Ref = React.createRef();
+	const pass2Ref = React.createRef();
+
+	const onRegister = () => {
+		const newUser = {
+			username: nameRef.current.value,
+			email: emailRef.current.value,
+			password1: pass1Ref.current.value,
+			password2: pass2Ref.current.value,
+		};
+        props.registerUser(newUser);
+        // console.log(props);
+	};
 
 	return (
 		<StyledContainer>
-			<StyledInput type="text" placeholder="username" />
+			<StyledInput type="text" placeholder="username" ref={nameRef} />
+			<StyledInput type="text" placeholder="email" ref={emailRef} />
+			<StyledInput type="password" placeholder="password" ref={pass1Ref} />
+			<StyledInput type="password" placeholder="password" ref={pass2Ref} />
 
-			<StyledInput type="password" placeholder="password" />
-
-			<StyledButton type="submit" >
+			<StyledButton type="submit" onClick={onRegister}>
 				Register
 			</StyledButton>
 		</StyledContainer>
