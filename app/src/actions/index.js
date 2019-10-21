@@ -1,0 +1,29 @@
+import axios from 'axios';
+
+const __BASE_URL__ = 'https://lambda-mud-test.herokuapp.com/api'
+
+export const REGISTERING_USER = 'REGISTERING_USER';
+export const REGISTERING_USER_SUCCESS = 'REGISTERING_USER_SUCCESS';
+export const REGISTERING_USER_FAILURE = 'REGISTERING_USER_FAILURE';
+
+export const registerUser = ({ username, password }) => {
+	const newUser = { username: username, password: password };
+	return function(dispatch) {
+		dispatch({ type: REGISTERING_USER });
+		// console.log('registering user');
+		axios
+			.post({__BASE_URL__} + '/registration/', newUser)
+			.then(res => {
+				dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.token });
+				// window.localStorage.setItem('token', res.data.token);
+				// console.log('succces');
+				// console.log(res.data.token);
+				// window.location = '/login';
+			})
+			.catch(error => {
+				dispatch({ type: REGISTERING_USER_FAILURE, payload: error.message });
+				// console.log('failure');
+				// console.log(error.message);
+			});
+	};
+};

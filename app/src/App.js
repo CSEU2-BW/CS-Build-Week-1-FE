@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import { connect } from 'react-redux';
+
 import Login from './components/Login'
 import Register from './components/Register'
 
@@ -12,4 +13,12 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+	return {
+		token: state.token,
+	};
+}
+
+export default connect(
+	mapStateToProps
+)(App);
