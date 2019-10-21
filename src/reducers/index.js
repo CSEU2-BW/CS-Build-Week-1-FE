@@ -1,8 +1,9 @@
 import * as types from '../actions';
 
 const initialState = {
-	registeringUser: false,
-	token: null,
+    registeringUser: false,
+    loggingInUser: false,
+	key: null,
 	error: null,
 };
 
@@ -17,7 +18,7 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				registeringUser: false,
-				token: action.payload,
+				key: action.payload,
 			};
 		case types.REGISTERING_USER_FAILURE:
 			return {
@@ -25,6 +26,23 @@ export const rootReducer = (state = initialState, action) => {
 				registeringUser: false,
 				error: action.payload,
             };
+        case types.LOGGING_IN_USER:
+            return {
+                ...state,
+                loggingInUser: true,
+            };
+        case types.LOGGING_IN_USER_SUCCESS:
+            return {
+                ...state,
+                loggingInUser: false,
+                key: action.payload.key,
+            };
+        case types.LOGGING_IN_USER_FAILURE:
+            return {
+                ...state,
+                loggingInUser: false,
+                error: action.payload,
+            };            
         default:
             return state;
     }

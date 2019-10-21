@@ -16,7 +16,8 @@ function App(props) {
 function mapStateToProps(state) {
 	return {
         registeringUser: state.registeringUser,
-        token: state.token,
+        loggingInUser: state.loggingInUser,
+        key: state.key,
         error: state.error,
 	};
 }

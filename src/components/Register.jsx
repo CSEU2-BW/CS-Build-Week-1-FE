@@ -15,7 +15,6 @@ export default function Register(props) {
 			password2: pass2Ref.current.value,
 		};
         props.registerUser(newUser);
-        // console.log(props);
 	};
 
 	return (
@@ -40,7 +39,8 @@ const StyledContainer = styled.div`
 
 	width: auto;
 	background-color: rgb(255, 183, 82, 0.9);
-	color: rgb(3, 84, 16);
+    color: rgb(3, 84, 16);
+    margin-bottom: 2rem;
 `;
 
 const StyledInput = styled.input`
