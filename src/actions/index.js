@@ -55,19 +55,20 @@ export const logOut = () => {
 	return { type: LOGOUT };
 };
 
-export const initialize = (key) => {
-    // console.log(key);
+export const initialize = (token) => {
+    console.log(token);
 	return function(dispatch) {
 		dispatch({ type: INITIALIZING });
 		axios
-            .get(`${__BASE_URL__}/adv/init`, {headers: {'Authorization': key}})
+            .get(`${__BASE_URL__}/adv/init`, {headers: {'Authorization': token}})
 			.then(res => {
 				dispatch({
 					type: INITIALIZING_SUCCESS,
 					payload: {
 						data: res.data,
 					},
-				});
+                });
+                console.log(res.data);
 			})
 			.catch(error => {
 				dispatch({ type: INITIALIZING_FAILURE, payload: error.message });
