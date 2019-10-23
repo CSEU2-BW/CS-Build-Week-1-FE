@@ -3,6 +3,7 @@ import * as types from '../actions';
 const initialState = {
     registeringUser: false,
     loggingInUser: false,
+    isLoggedIn: false,
 	key: null,
 	error: null,
 };
@@ -36,6 +37,7 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 loggingInUser: false,
                 key: action.payload.key,
+                isLoggedIn: true,
             };
         case types.LOGGING_IN_USER_FAILURE:
             return {
