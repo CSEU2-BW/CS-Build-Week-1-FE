@@ -2,49 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function Login(props) {
-	const nameRef = React.createRef();
-	const passRef = React.createRef();
+  const nameRef = React.createRef();
+  const passRef = React.createRef();
 
-	const onLogIn = () => {
-		const existingUser = {
-			username: nameRef.current.value,
-			password: passRef.current.value,
-		};
-        props.logInUser(existingUser);
+  const onLogIn = () => {
+    const existingUser = {
+      username: nameRef.current.value,
+      password: passRef.current.value,
     };
+    props.logInUser(existingUser);
+  };
 
-    // console.log(props.key);
-    
-	return (
-		<StyledContainer>
-				<StyledInput type="text" placeholder="username" ref={nameRef} />
+  // console.log(props.key);
 
-				<StyledInput type="password" placeholder="password" ref={passRef} />
+  return (
+    <StyledContainer>
+      <StyledInput type="text" placeholder="username" ref={nameRef} />
 
-			<StyledButton type="submit" onClick={onLogIn} >
-				Log In
-			</StyledButton>
-		</StyledContainer>
-	);
+      <StyledInput type="password" placeholder="password" ref={passRef} />
+
+      <StyledButton type="submit" onClick={onLogIn}>
+        Log In
+      </StyledButton>
+    </StyledContainer>
+  );
 }
 
 const StyledContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-	width: auto;
-	background-color: rgb(255, 183, 82, 0.9);
-	color: rgb(3, 84, 16);
+  width: auto;
+  background-color: rgb(255, 183, 82, 0.9);
+  color: rgb(3, 84, 16);
 `;
 
 const StyledInput = styled.input`
-	font-size: 1.5rem;
-	margin: 0.5rem;
+  font-size: 1.5rem;
+  margin: 0.5rem;
 `;
 
 const StyledButton = styled.button`
-	font-size: 1.5rem;
-	margin: 0.5rem;
+  font-size: 1.5rem;
+  margin: 0.5rem;
 `;
