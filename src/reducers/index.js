@@ -44,7 +44,9 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 loggingInUser: false,
                 error: action.payload,
-            };            
+            };
+        case types.LOGOUT:
+            return initialState;                        
         default:
             return state;
     }

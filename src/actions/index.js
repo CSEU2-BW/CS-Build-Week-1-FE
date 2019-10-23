@@ -10,6 +10,8 @@ export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGING_IN_USER_SUCCESS = 'LOGGING_IN_USER_SUCCESS';
 export const LOGGING_IN_USER_FAILURE = 'LOGGING_IN_USER_FAILURE';
 
+export const LOGOUT = 'LOGOUT';
+
 export const registerUser = (props) => {
 	const newUser = { username: props.username, email: props.email, password1: props.password1, password2: props.password2 };
 	return function(dispatch) {
@@ -43,4 +45,8 @@ export const logInUser = (props) => {
 				dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.message });
 			});
 	};
+};
+
+export const logOut = () => {
+	return { type: LOGOUT };
 };

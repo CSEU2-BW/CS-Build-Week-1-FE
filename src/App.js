@@ -5,6 +5,7 @@ import * as actions from './actions/index';
 import Login from './components/Login'
 import Register from './components/Register'
 import Play from './components/Play'
+import Logout from './components/Logout'
 
 function App(props) {
   return (
@@ -16,6 +17,7 @@ function App(props) {
 
         <div>
             {props.isLoggedIn && (<Play {...props} />)}
+            {props.isLoggedIn && (<Logout {...props} />)}
         </div>
 
 
