@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { Route } from 'react-router-dom';
 import * as actions from './actions/index';
 import Login from './components/Login';
+import RestrictedRoute from './HOCs/RestrictedRoute';
 import Register from './components/Register';
 import Play from './components/Play';
 import Logout from './components/Logout';
+import Map from './components/map/Map';
 
 function App(props) {
   return (
@@ -14,6 +16,8 @@ function App(props) {
         {!props.isLoggedIn && <Register {...props} />}
         {!props.isLoggedIn && <Login {...props} />}
       </div>
+
+      <Map exact path="/map" component={Map} />
 
       <div>
         {props.isLoggedIn && <Logout {...props} />}
