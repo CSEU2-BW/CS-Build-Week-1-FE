@@ -17,7 +17,7 @@ function App(props) {
 
         <div>
             {props.isLoggedIn && (<Logout {...props} />)}
-            {props.isLoggedIn && (<Play {...props} />)}
+            {props.isLoggedIn && props.token && (<Play {...props} />)}
         </div>
 
 
@@ -27,11 +27,11 @@ function App(props) {
 
 function mapStateToProps(state) {
 	return {
-        registeringUser: state.registeringUser,
-        loggingInUser: state.loggingInUser,
+        loading: state.loading,
         isLoggedIn: state.isLoggedIn,
-        key: state.key,
+        token: state.token,
         error: state.error,
+        data: state.data,
 	};
 }
 

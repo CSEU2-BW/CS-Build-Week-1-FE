@@ -1,10 +1,13 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-export default function Play() {
-
-    
+export default function Play(props) {
+    // props.initialize(props.key);
+    console.log(props.token);
 	return (
-		<div>Play Area</div>
+		<div>
+            <p>Play Area</p>
+        </div>
+        
 	);
 }
