@@ -16,8 +16,8 @@ function App(props) {
         </div>
 
         <div>
-            {props.isLoggedIn && (<Play {...props} />)}
             {props.isLoggedIn && (<Logout {...props} />)}
+            {props.isLoggedIn && (<Play {...props} />)}
         </div>
 
 
