@@ -10,6 +10,12 @@ export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGING_IN_USER_SUCCESS = 'LOGGING_IN_USER_SUCCESS';
 export const LOGGING_IN_USER_FAILURE = 'LOGGING_IN_USER_FAILURE';
 
+export const LOGOUT = 'LOGOUT';
+
+export const INITIALIZING = 'INITIALIZING';
+export const INITIALIZING_SUCCESS = 'INITIALIZING_SUCCESS';
+export const INITIALIZING_FAILURE = 'INITIALIZING_FAILURE';
+
 export const registerUser = (props) => {
 	const newUser = { username: props.username, email: props.email, password1: props.password1, password2: props.password2 };
 	return function(dispatch) {
@@ -43,4 +49,29 @@ export const logInUser = (props) => {
 				dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.message });
 			});
 	};
+};
+
+export const logOut = () => {
+	return { type: LOGOUT };
+};
+
+export const initialize = (token) => {
+    console.log(token);
+	return function(dispatch) {
+		dispatch({ type: INITIALIZING });
+		axios
+            .get(`${__BASE_URL__}/adv/init`, {headers: {'Authorization': token}})
+			.then(res => {
+				dispatch({
+					type: INITIALIZING_SUCCESS,
+					payload: {
+						data: res.data,
+					},
+                });
+                console.log(res.data);
+			})
+			.catch(error => {
+				dispatch({ type: INITIALIZING_FAILURE, payload: error.message });
+            });
+    };
 };

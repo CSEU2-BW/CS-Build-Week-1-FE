@@ -1,10 +1,11 @@
 import * as types from '../actions';
 
 const initialState = {
-    registeringUser: false,
-    loggingInUser: false,
-	key: null,
-	error: null,
+    loading: false,
+    isLoggedIn: false,
+	token: null,
+    error: null,
+    data: null,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -12,37 +13,61 @@ export const rootReducer = (state = initialState, action) => {
 		case types.REGISTERING_USER:
 			return {
 				...state,
-				registeringUser: true,
+				loading: true,
 			};
 		case types.REGISTERING_USER_SUCCESS:
 			return {
 				...state,
-				registeringUser: false,
-				key: action.payload,
+				loading: false,
+				token: action.payload.key,
 			};
 		case types.REGISTERING_USER_FAILURE:
 			return {
 				...state,
-				registeringUser: false,
+				loading: false,
 				error: action.payload,
             };
+
         case types.LOGGING_IN_USER:
             return {
                 ...state,
-                loggingInUser: true,
+                loading: true,
             };
         case types.LOGGING_IN_USER_SUCCESS:
             return {
                 ...state,
-                loggingInUser: false,
-                key: action.payload.key,
+                loading: false,
+                token: action.payload.key,
+                isLoggedIn: true,
             };
         case types.LOGGING_IN_USER_FAILURE:
             return {
                 ...state,
-                loggingInUser: false,
+                loading: false,
                 error: action.payload,
-            };            
+            };
+
+        case types.LOGOUT:
+            return initialState; 
+
+        case types.INITIALIZING:
+            return {
+                ...state,
+                loading: true,
+            };
+        case types.INITIALIZING_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                data: action.payload,
+            };
+        case types.INITIALIZING_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+
         default:
             return state;
     }

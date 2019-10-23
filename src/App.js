@@ -1,24 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import * as actions from './actions/index';
 import Login from './components/Login'
 import Register from './components/Register'
+import Play from './components/Play'
+import Logout from './components/Logout'
 
 function App(props) {
   return (
     <div>
-        <Register {...props} />
-        <Login {...props} />
+        <div>
+            {!props.isLoggedIn && (<Register {...props} />)}
+            {!props.isLoggedIn && (<Login {...props} />)}
+        </div>
+
+        <div>
+            {props.isLoggedIn && (<Logout {...props} />)}
+            {props.isLoggedIn && props.token && (<Play {...props} />)}
+        </div>
+
+
     </div>
   );
 }
 
 function mapStateToProps(state) {
 	return {
-        registeringUser: state.registeringUser,
-        loggingInUser: state.loggingInUser,
-        key: state.key,
+        loading: state.loading,
+        isLoggedIn: state.isLoggedIn,
+        token: state.token,
         error: state.error,
+        data: state.data,
 	};
 }
 

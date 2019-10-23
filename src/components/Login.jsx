@@ -12,6 +12,8 @@ export default function Login(props) {
 		};
         props.logInUser(existingUser);
     };
+
+    // console.log(props.key);
     
 	return (
 		<StyledContainer>
