@@ -17,7 +17,7 @@ function App(props) {
         {!props.isLoggedIn && <Login {...props} />}
       </div> */}
 
-      <Map exact path="/map" component={Map} />
+      <Map exact path="/map" {...props} />
 
       {/* <div>
         {props.isLoggedIn && <Logout {...props} />}

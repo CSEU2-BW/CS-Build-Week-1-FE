@@ -68,6 +68,24 @@ export const rootReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
+    case types.FETCHING_ROOMS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.FETCHING_ROOMS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case types.FETCHING_ROOMS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

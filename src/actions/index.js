@@ -10,6 +10,10 @@ export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGING_IN_USER_SUCCESS = 'LOGGING_IN_USER_SUCCESS';
 export const LOGGING_IN_USER_FAILURE = 'LOGGING_IN_USER_FAILURE';
 
+export const FETCHING_ROOMS = 'FETCHING_ROOMS';
+export const FETCHING_ROOMS_SUCCESS = 'FETCHING_ROOMS_SUCCESS';
+export const FETCHING_ROOMS_FAILURE = 'FETCHING_ROOMS_FAILURE';
+
 export const LOGOUT = 'LOGOUT';
 
 export const INITIALIZING = 'INITIALIZING';
@@ -82,3 +86,27 @@ export const initialize = token => {
       });
   };
 };
+
+export const fetchingRooms = () => {
+  return function(dispatch) {
+    dispatch({ type: FETCHING_ROOMS });
+    axios
+      .get(`${__BASE_URL__}/adv/init/fetch_rooms`, {
+        headers: { Authorization: 'd34eacdea490b588ec35bed097327e7fa7cb7514' },
+      })
+      .then(res => {
+        dispatch({
+          type: FETCHING_ROOMS_SUCCESS,
+          payload: {
+            data: res.data,
+          },
+        });
+        console.log(res.data);
+      })
+      .catch(error => {
+        dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.message });
+      });
+  };
+};
+
+// https://lambda-mud-test.herokuapp.com/api/adv/fetch_rooms/

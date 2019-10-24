@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Rooms from './Rooms';
 
-class Map extends Component {
-  render() {
-    return (
-      <div className="map-container">
-        <Rooms />
-      </div>
-    );
-  }
+function Map(props) {
+  console.log(props)
+  return (
+    <div className="map-container">
+      <Rooms />
+
+
+    </div>
+  );
 }
 
 export default Map;
