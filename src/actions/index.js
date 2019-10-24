@@ -47,7 +47,6 @@ export const logInUser = props => {
     axios
       .post(`${__BASE_URL__}/login/`, existingUser)
       .then(res => {
-        console.log(res);
         localStorage.setItem('token', res.data.key);
         dispatch({
           type: LOGGING_IN_USER_SUCCESS,

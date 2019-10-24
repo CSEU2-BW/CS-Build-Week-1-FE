@@ -43,23 +43,28 @@ const Button = styled.button`
   border: none;
 `;
 const ActionDiv = styled.div`
-margin-left:40%;
-margin-top:10%;
-  width:30%;
-  height:50%;
+  margin-left: 40%;
+  margin-top: 10%;
+  width: 30%;
+  height: 100%;
 `;
 
 function App(props) {
   const [current, setCurrent] = useState({
     started: false,
     show: false,
-    registered: false,
-    loggedIn: false
+    registered: false
   });
   const getStarted = () => {
     setCurrent({
       ...current,
       started: true
+    });
+  };
+  const setModal = () => {
+    setCurrent({
+      ...current,
+      registered: !current.registered
     });
   };
   const fetch_rooms = () => {
@@ -71,30 +76,37 @@ function App(props) {
       {!current.started && (
         <Typed
           strings={[
-            '<p>There is a lot of adventures awaiting you in the house</p>',
+            "<p>There is a lot of adventures awaiting you in the house</p>"
           ]}
           typespeed={100}
-          fadeOut={true}
+          fadeOut
           showCursor={false}
           onComplete={() => setCurrent({ ...current, show: true })}
         />
       )}
-      {!current.started && current.show && <Button onClick={getStarted}>Get Started</Button>}
+      {!current.started && current.show && (
+        <Button onClick={getStarted}>Get Started</Button>
+      )}
       {current.started && (
         <ActionDiv>
-            {/* {!props.isLoggedIn && <Register {...props} />} */}
-            {!props.isLoggedIn && <Login {...props} />}
-          </ActionDiv>
-          // <button onClick={fetch_rooms} type="submit">
-          //   Fetch Rooms
-          // </button>
+          {console.log(current.registered)}
+          {!props.isLoggedIn && current.registered && (
+            <Register started={setModal} />
+          )}
+          {!props.isLoggedIn && !current.registered && (
+            <Login started={setModal} />
+          )}
+        </ActionDiv>
+        // <button onClick={fetch_rooms} type="submit">
+        //   Fetch Rooms
+        // </button>
 
-          // <Map exact path="/map" {...props.data} />
+        // <Map exact path="/map" {...props.data} />
 
-          // <div>
-          //   {props.isLoggedIn && <Logout {...props} />}
-          //   {props.isLoggedIn && props.token && <Play {...props} />}
-          // </div>
+        // <div>
+        //   {props.isLoggedIn && <Logout {...props} />}
+        //   {props.isLoggedIn && props.token && <Play {...props} />}
+        // </div>
         // </div>
       )}
     </Container>
