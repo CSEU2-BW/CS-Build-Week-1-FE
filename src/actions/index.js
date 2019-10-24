@@ -100,7 +100,7 @@ export const fetchingRooms = () =>
       : null;
 
     return axios
-      .get(`${__BASE_URL__}/adv/fetch_rooms`, axiosConfig)
+      .get(`${__BASE_URL__}/adv/fetch_rooms`)
       .then(res => {
         dispatch({
           type: FETCHING_ROOMS_SUCCESS,

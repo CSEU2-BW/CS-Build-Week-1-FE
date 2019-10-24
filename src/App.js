@@ -15,21 +15,21 @@ function App(props) {
   };
   return (
     <div>
-      <div>
+      {/* <div>
         {!props.isLoggedIn && <Register {...props} />}
         {!props.isLoggedIn && <Login {...props} />}
-      </div>
+      </div> */}
 
       <button onClick={fetch_rooms} type="submit">
         Fetch Rooms
       </button>
 
-      <Map exact path="/map" {...props.data} />
+      {props.data && <Map exact path="/map" {...props.data} />}
 
-      <div>
+      {/* <div>
         {props.isLoggedIn && <Logout {...props} />}
         {props.isLoggedIn && props.token && <Play {...props} />}
-      </div>
+      </div> */}
     </div>
   );
 }
