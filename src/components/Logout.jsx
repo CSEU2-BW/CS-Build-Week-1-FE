@@ -17,6 +17,6 @@ const Logout = props => {
 };
 
 export default connect(
-  {},
+  null,
   { logOut },
 )(Logout);

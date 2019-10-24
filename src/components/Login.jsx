@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { logInUser } from '../actions/index';
+import {toast} from 'react-toastify'
 
 export const Login = (props) => {
   const nameRef = React.createRef();
   const passRef = React.createRef();
 
-  const onLogIn = () => {
+  const onLogIn = (e) => {
+    e.preventDefault()
     const existingUser = {
       username: nameRef.current.value,
       password: passRef.current.value,
@@ -20,30 +22,29 @@ export const Login = (props) => {
   // console.log(props.key);
 
   return (
-    <StyledContainer>
+    <StyledContainer onSubmit={onLogIn}>
       <h2>Welcome To The House! Login</h2>
       <StyledInput type="text" placeholder="username" ref={nameRef} required/>
 
       <StyledInput type="password" placeholder="password" ref={passRef} required/>
 
-      <StyledButton type="submit" onClick={onLogIn}>
-        Log In
-      </StyledButton>
+      <StyledButton type="submit" value="Login" />
+
       <p>
-      {props.error && props.error.password1.map((error, i) => toast(<Err key={i} >{error}</Err>))}
-New to Adventure House?
+      {props.error && props.error.data.non_field_errors.map((error, i) => toast(<p key={i}>{error}</p>))}
+New to the House?
         <OtherAction onClick={() => props.started()}>Register</OtherAction>
       </p>
     </StyledContainer>
   );
 };
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height:85%;
+  height:90%;
   background:#e2e2e2;
   opacity:0.8;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
@@ -66,7 +67,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.input`
   font-size: 1.5rem;
   margin: 0.5rem;
   outline:none;
@@ -91,7 +92,8 @@ const OtherAction = styled.button`
     border-radius:5px;
   }
 `;
-const mapStateToProps = ({error }) => ({ error });
+
+const mapStateToProps = ({ error }) => ({ error });
 
 
 export default connect(mapStateToProps, { logInUser })(Login);

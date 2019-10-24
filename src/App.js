@@ -1,17 +1,14 @@
-
 import React from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
-import {ToastContainer} from 'react-toastify';
 import * as actions from "./actions/index";
 import RestrictedRoute from "./HOCs/RestrictedRoute";
 import Logout from "./components/Logout";
 import Map from "./components/map/Map";
-import Home from './views/home';
+import Home from "./views/home";
 import Play from "./views/Play";
-import Register from './views/register';
-
+import Register from "./views/register";
 
 const Container = styled.div`
   width: 100%;
@@ -28,10 +25,9 @@ const Container = styled.div`
     text-align: center;
   }
 `;
-
+const WithHoc = RestrictedRoute(Play);
 
 function App(props) {
-  
   // const getStarted = () => {
   //   setCurrent({
   //     ...current,
@@ -48,16 +44,22 @@ function App(props) {
   //   props.fetchingRooms();
   // };
   return (
-    <div>
+    <Container>
       {props.isLoggedIn && <Logout {...props} />}
-      <ToastContainer />
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Register} />
-      <Route path="/play" component={Play} />
-    </div>
+      <Route
+        path="/login"
+        render={() => {
+          if (localStorage.getItem("token")) {
+            return <Redirect to="/play" />;
+          }
+          return <Register />;
+        }}
+      />
+      <Route path="/play" component={WithHoc} />
+    </Container>
   );
 }
-
 
 function mapStateToProps(state) {
   return {
@@ -65,7 +67,7 @@ function mapStateToProps(state) {
     isLoggedIn: state.isLoggedIn,
     token: state.token,
     error: state.error,
-    data: state.data,
+    data: state.data
   };
 }
 

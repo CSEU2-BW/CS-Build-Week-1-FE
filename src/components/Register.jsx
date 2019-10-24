@@ -38,10 +38,13 @@ export const Register = props => {
         ref={pass2Ref}
         required
       />
-      {props.error && props.error.password1.map((error, i) => toast(<Err key={i} >{error}</Err>))}
+      {props.error && props.error.username && props.error.data.username.map((error, i) => toast(<p key={i}>{error}</p>))}
+      {/* {props.error && props.error.email && props.error.email.map((error, i) => toast(<p key={i}>{error}</p>))}
+      {props.error && props.error.password1.map((error, i) => toast(<p key={i}>{error}</p>))}
+      {props.error && props.error.password2.map((error, i) => toast(<p key={i}>{error}</p>))} */}
       <StyledSubmit type="submit" value="Register" />
       <p>
-        Already in the Adventure House?
+        Already in the House?
         <OtherAction onClick={() => props.started()}>Login</OtherAction>
       </p>
     </StyledContainer>
@@ -53,7 +56,7 @@ const StyledContainer = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 85%;
+  height: 90%;
   background: #e2e2e2;
   opacity: 0.8;
   clip-path: polygon(
@@ -109,12 +112,9 @@ const OtherAction = styled.button`
     border-radius: 5px;
   }
 `;
-const Err = styled.p`
-  color:red;
-  width:20%;
-`;
 
-const mapStateToProps = ({error }) => ({error,});
+
+const mapStateToProps = ({ error }) => ({ error });
 
 export default connect(
   mapStateToProps,

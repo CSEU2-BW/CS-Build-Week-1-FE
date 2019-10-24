@@ -3,6 +3,8 @@ import { Link} from "react-router-dom";
 import Typed from "react-typed";
 import styled from "styled-components";
 import Background1 from "../assests/house.jpg";
+import "../animate.css";
+import {Animated} from "react-animated-css";
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -13,15 +15,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content:center;
   h1 {
     color: white;
     font-size: 3em;
     text-align: center;
   }
-`;
+  span{
+    height:30vh;
+    color:white;
+    font-size:1.5rem;
+  }
+  a{
 
-const Button = styled.button`
-  margin-top: 50vh;
+  margin-top: 10vh;
   outline: none;
   background-color: inherit;
   color: white;
@@ -30,8 +37,11 @@ const Button = styled.button`
   width: 10em;
   font-weight: bold;
   border: none;
+  text-decoration:none;
+  }
 `;
 
+const word = localStorage.getItem('token')?'Continue Game' : 'Get Started';
 const Home = () => {
   const [current, setCurrent] = useState(false);
   return (
@@ -39,14 +49,16 @@ const Home = () => {
       <h1> Adventure House</h1>
       <Typed
         strings={[
-          '<p>There is a lot of adventures awaiting you in the house</p>',
+          '<p>There is a lot of adventures awaiting you .....</p>',
+          '<p>The only thing holding you back is your fears ....</p>',
+          '<p>Get rid of your fear and get an adventure!'
         ]}
         typespeed={100}
         fadeOut
         showCursor={false}
         onComplete={() => setCurrent({ current: true })}
       />
-      {current && <Link to="/login"> Get Started</Link>}
+      {current && <Animated animationIn="flash"><Link to="/login"> {word} </Link> </Animated>}
     </Container>
   );
 };

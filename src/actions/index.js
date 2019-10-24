@@ -39,7 +39,7 @@ export const registerUser = props => {
         dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.key });
       })
       .catch(error => {
-        dispatch({ type: REGISTERING_USER_FAILURE, payload: error.response.data });
+        dispatch({ type: REGISTERING_USER_FAILURE, payload: error.response });
       });
   };
 };
@@ -60,7 +60,7 @@ export const logInUser = props => {
         });
       })
       .catch(error => {
-        dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.response.data });
+        dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.response });
       });
   };
 };
@@ -84,7 +84,7 @@ export const initialize = () => dispatch => {
       });
     })
     .catch(error => {
-      dispatch({ type: INITIALIZING_FAILURE, payload: error.response.data});
+      dispatch({ type: INITIALIZING_FAILURE, payload: error.response });
     });
 };
 
@@ -109,7 +109,7 @@ export const fetchingRooms = () =>
         // console.log(res.data);
       })
       .catch(error => {
-        dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.response.data });
+        dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.response });
       });
   };
 
@@ -134,6 +134,6 @@ export const navigateRooms = direction => dispatch => {
       });
     })
     .catch(error => {
-      dispatch({ type: NAVIGATE_FAILURE, payload: error.response.data });
+      dispatch({ type: NAVIGATE_FAILURE, payload: error.response });
     });
 };
