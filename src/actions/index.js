@@ -1,6 +1,6 @@
 import axios from "axios";
+const __BASE_URL__ = 'https://mudgame.herokuapp.com/api'
 
-const __BASE_URL__ = "https://mudgame.herokuapp.com/api";
 
 export const REGISTERING_USER = "REGISTERING_USER";
 export const REGISTERING_USER_SUCCESS = "REGISTERING_USER_SUCCESS";
@@ -51,8 +51,7 @@ export const logInUser = props => {
     axios
       .post(`${__BASE_URL__}/login/`, existingUser)
       .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.key);
+        localStorage.setItem('token', res.data.key);
         dispatch({
           type: LOGGING_IN_USER_SUCCESS,
           payload: {
