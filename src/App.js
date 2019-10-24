@@ -20,11 +20,11 @@ function App(props) {
         {!props.isLoggedIn && <Login {...props} />}
       </div>
 
-      <button onClick={fetch_rooms} type="submit">
+      {/* <button onClick={fetch_rooms} type="submit">
         Fetch Rooms
-      </button>
+      </button> */}
 
-      <Map exact path="/map" {...props.data} />
+      {/* <Map exact path="/map" {...props.data} /> */}
 
       <div>
         {props.isLoggedIn && <Logout {...props} />}
