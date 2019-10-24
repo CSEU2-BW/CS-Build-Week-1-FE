@@ -1,14 +1,11 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Room extends Component {
-  render() {
-    return <StyledRoom>{this.props.room}</StyledRoom>
-  }
+function Room(props) {
+  return <StyledRoom>{props.room}</StyledRoom>;
 }
 
 export default Room;
-
 
 const StyledRoom = styled.div`
   background-color: yellowgreen;

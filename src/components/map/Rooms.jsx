@@ -1,34 +1,40 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
-import Room from './Room';
+import React from 'react';
+import Ten from './Ten';
 
 function Rooms(props) {
-  console.log(props.data.rooms);
-  for (let i = 0; i < 10; i++) {
-    let increment = i;
-    return (
-      <RoomWrapper>
-        <div>
-          {props.data.rooms.map((room, index) => {
-            if (index >= increment * 10 && index < (increment + 1) * 10) {
-              return (
-                <Room room={room.title} key={room.id}>
-                  {room.title}
-                </Room>
-              );
-            }
-          })}
-        </div>
-      </RoomWrapper>
-    );
-  }
+  //   console.log(props.data.rooms);
+  const tenrooms0 = props.data.rooms.slice(0, 10);
+  const tenrooms1 = props.data.rooms.slice(10, 20);
+  const tenrooms2 = props.data.rooms.slice(20, 30);
+  const tenrooms3 = props.data.rooms.slice(30, 40);
+  const tenrooms4 = props.data.rooms.slice(40, 50);
+  const tenrooms5 = props.data.rooms.slice(50, 60);
+  const tenrooms6 = props.data.rooms.slice(60, 70);
+  const tenrooms7 = props.data.rooms.slice(70, 80);
+  const tenrooms8 = props.data.rooms.slice(80, 90);
+  const tenrooms9 = props.data.rooms.slice(90, 100);
+  return (
+    <Wrapper>
+      <Ten rooms={tenrooms0} />
+      <Ten rooms={tenrooms1} />
+      <Ten rooms={tenrooms2} />
+      <Ten rooms={tenrooms3} />
+      <Ten rooms={tenrooms4} />
+      <Ten rooms={tenrooms5} />
+      <Ten rooms={tenrooms6} />
+      <Ten rooms={tenrooms7} />
+      <Ten rooms={tenrooms8} />
+      <Ten rooms={tenrooms9} />
+    </Wrapper>
+  );
 }
 
 export default Rooms;
 
-const RoomWrapper = styled.div`
+const Wrapper = styled.div`
   width: 1100px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column-reverse;
 `;
