@@ -31,6 +31,12 @@ const Container = styled.div`
         text-align:right;
     }
   }
+  a{
+    color:white;
+    text-decoration:none;
+    font-size:1rem;
+    padding:1rem;
+}
 `;
 
 const ActionDiv = styled.div`
@@ -51,7 +57,7 @@ const Registered = props => {
         {!props.isLoggedIn && !registering && <SignIn started={setModal} />}
         {!props.isLoggedIn && registering && <SignUp started={setModal} />}
       </ActionDiv>
-      <Link to ='/'> Go to Home</Link>
+      <Link to='/'> Go to Home</Link>
     </Container>
   );
 };
