@@ -24,7 +24,11 @@ function App(props) {
         Fetch Rooms
       </button> */}
 
+<<<<<<< HEAD
       {/* {props.data && <Map exact path="/map" {...props.data} />} */}
+=======
+      <Map exact path="/map" {...props.data} />
+>>>>>>> bf09d789a75de7862e1b508f22e4d14a6bf91cdb
 
       <div>
         {props.isLoggedIn && <Logout {...props} />}
