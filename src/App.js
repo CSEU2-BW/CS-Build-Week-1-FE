@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import * as actions from './actions/index';
-import Login from './components/Login';
-import RestrictedRoute from './HOCs/RestrictedRoute';
-import Register from './components/Register';
-import Play from './components/Play';
-import Logout from './components/Logout';
-import Map from './components/map/Map';
+import React from "react";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
+import * as actions from "./actions/index";
+import Login from "./components/Login";
+import RestrictedRoute from "./HOCs/RestrictedRoute";
+import Register from "./components/Register";
+import Play from "./components/Play";
+import Logout from "./components/Logout";
+import Map from "./components/map/Map";
 
 function App(props) {
   const fetch_rooms = () => {
@@ -40,11 +40,11 @@ function mapStateToProps(state) {
     isLoggedIn: state.isLoggedIn,
     token: state.token,
     error: state.error,
-    data: state.data,
+    data: state.data
   };
 }
 
 export default connect(
   mapStateToProps,
-  actions,
+  actions
 )(App);
