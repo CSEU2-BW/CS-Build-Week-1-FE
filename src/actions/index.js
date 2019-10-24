@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const __BASE_URL__ = 'https://lambda-mud-test.herokuapp.com/api'
+const __BASE_URL__ = 'https://mudgame.herokuapp.com/api'
 
 export const REGISTERING_USER = 'REGISTERING_USER';
 export const REGISTERING_USER_SUCCESS = 'REGISTERING_USER_SUCCESS';
