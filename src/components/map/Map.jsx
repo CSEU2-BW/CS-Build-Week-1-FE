@@ -5,7 +5,7 @@ import Rooms from './Rooms';
 function Map(props) {
   console.log(props)
   return (
-    <div className="map-container">
+    <div className="map-container" style={{ backgroundColor: 'yellowgreen' }}>
       <Rooms {...props} />
 
 
