@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const __BASE_URL__ = 'https://lambda-mud-test.herokuapp.com/api';
+const __BASE_URL__ = 'https://mudgame.herokuapp.com/api';
 
 export const REGISTERING_USER = 'REGISTERING_USER';
 export const REGISTERING_USER_SUCCESS = 'REGISTERING_USER_SUCCESS';
@@ -95,7 +95,7 @@ export const fetchingRooms = () => {
     const axiosConfig = token ? { headers: { 'Authorization' : `Token ${token}` } } : null;
 
     return axios
-      .get(`${__BASE_URL__}/adv/fetch_rooms`, axiosConfig)
+      .get(`${__BASE_URL__}/adv/fetch_rooms`)
       .then(res => {
         dispatch({
           type: FETCHING_ROOMS_SUCCESS,
