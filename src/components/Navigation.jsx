@@ -11,10 +11,10 @@ const Navigation = props => (
     <Button type="button" onClick={() => props.navigateRooms("s")}>
       South
     </Button>
-    <Button type="button" onClick={() => props.navigateRooms("w")}>
+    <Button type="button" onClick={() => props.navigateRooms("e")}>
       East
     </Button>
-    <Button type="button" onClick={() => props.navigateRooms("e")}>
+    <Button type="button" onClick={() => props.navigateRooms("w")}>
       West
     </Button>
   </Container>
