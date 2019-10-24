@@ -103,7 +103,7 @@ export const fetchingRooms = () => {
             data: res.data,
           },
         });
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(error => {
         dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.message });

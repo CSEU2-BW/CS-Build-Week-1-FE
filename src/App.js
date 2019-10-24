@@ -24,7 +24,7 @@ function App(props) {
         Fetch Rooms
       </button>
 
-      <Map exact path="/map" {...props} />
+      <Map exact path="/map" {...props.data} />
 
       <div>
         {props.isLoggedIn && <Logout {...props} />}
