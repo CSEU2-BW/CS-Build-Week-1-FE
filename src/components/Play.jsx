@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Navigation from "./Navigation";
 import { initialize } from "../actions";
+import Map from "./map/Map"
 
 const Play = props => {
   useEffect(() => {
     props.initialize(props.token);
+    props.fetchingRooms();
   }, []);
 
   return (
     <Container>
       <p className="title">MUD GAME</p>
       <Game>
-        <Map>
-          <p>Hello</p>
-        </Map>
+        <MapWrapper>
+          {props.data && <Map exact path="/map" {...props.data} />}
+        </MapWrapper>
         <Room>
           <p>
             Hello, &nbsp;
@@ -90,7 +92,7 @@ const Game = styled.div`
   border: 2px darkgreen solid;
 `;
 
-const Map = styled.div`
+const MapWrapper = styled.div`
   width: 75%;
   height: 75vh;
   box-sizing: border-box;

@@ -10,21 +10,12 @@ import Logout from "./components/Logout";
 import Map from "./components/map/Map";
 
 function App(props) {
-  const fetch_rooms = () => {
-    props.fetchingRooms();
-  };
   return (
     <div>
       <div>
         {!props.isLoggedIn && <Register {...props} />}
         {!props.isLoggedIn && <Login {...props} />}
       </div>
-
-      {/* <button onClick={fetch_rooms} type="submit">
-        Fetch Rooms
-      </button> */}
-
-      {/* <Map exact path="/map" {...props.data} /> */}
 
       <div>
         {props.isLoggedIn && <Logout {...props} />}
