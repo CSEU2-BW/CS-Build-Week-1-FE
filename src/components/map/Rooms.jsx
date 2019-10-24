@@ -3,7 +3,6 @@ import React from 'react';
 import Ten from './Ten';
 
 function Rooms(props) {
-  //   console.log(props.data.rooms);
   const tenrooms0 = props.data.rooms.slice(0, 10);
   const tenrooms1 = props.data.rooms.slice(10, 20);
   const tenrooms2 = props.data.rooms.slice(20, 30);

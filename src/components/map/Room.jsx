@@ -12,13 +12,11 @@ function Room(props) {
       crt={props.currentRoom.title}
       title={props.room.title}
     >
-      {/* {props.room.title} */}
       {props.room.title}
     </StyledRoom>
   );
 }
 
-// export default Room;
 
 const mapStateToProps = state => ({
   currentRoom: state.currentRoom,
@@ -26,11 +24,9 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-//   { initialize },
 )(Room);
 
 const StyledRoom = styled.div`
-  /* background-color: yellowgreen; */
   width: 70px;
   height: 40px;
   border-top: 4px solid yellowgreen;

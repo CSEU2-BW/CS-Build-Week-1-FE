@@ -4,11 +4,8 @@ import { connect } from "react-redux";
 import { fetchingRooms } from "../../actions"
 
 function Map(props) {
-//   useEffect(() => {
-//     props.fetchingRooms();
-//     }, []);
   return (
-    <div className="map-container" style={{ backgroundColor: 'yellowgreen' }}>
+    <div style={{ backgroundColor: 'yellowgreen' }}>
       <Rooms {...props} />
 
 
