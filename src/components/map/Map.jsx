@@ -1,9 +1,12 @@
-
-import React from 'react';
+import React, { useEffect } from "react";
 import Rooms from './Rooms';
+import { connect } from "react-redux";
+import { fetchingRooms } from "../../actions"
 
 function Map(props) {
-  console.log(props)
+//   useEffect(() => {
+//     props.fetchingRooms();
+//     }, []);
   return (
     <div className="map-container" style={{ backgroundColor: 'yellowgreen' }}>
       <Rooms {...props} />
@@ -13,4 +16,4 @@ function Map(props) {
   );
 }
 
-export default Map;
+export default connect(null, { fetchingRooms })(Map);

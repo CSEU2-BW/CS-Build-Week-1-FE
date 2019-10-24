@@ -10,26 +10,26 @@ import Logout from "./components/Logout";
 import Map from "./components/map/Map";
 
 function App(props) {
-  const fetch_rooms = () => {
-    props.fetchingRooms();
-  };
+//   const fetch_rooms = () => {
+//     props.fetchingRooms();
+//   };
   return (
     <div>
-      {/* <div>
+      <div>
         {!props.isLoggedIn && <Register {...props} />}
         {!props.isLoggedIn && <Login {...props} />}
-      </div> */}
+      </div>
 
-      <button onClick={fetch_rooms} type="submit">
+      {/* <button onClick={fetch_rooms} type="submit">
         Fetch Rooms
-      </button>
+      </button> */}
 
-      {props.data && <Map exact path="/map" {...props.data} />}
+      {/* {props.data && <Map exact path="/map" {...props.data} />} */}
 
-      {/* <div>
+      <div>
         {props.isLoggedIn && <Logout {...props} />}
         {props.isLoggedIn && props.token && <Play {...props} />}
-      </div> */}
+      </div>
     </div>
   );
 }
