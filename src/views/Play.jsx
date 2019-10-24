@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import Navigation from "./Navigation";
-import { initialize } from "../actions";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import Navigation from '../components/Navigation';
+import { initialize } from '../actions';
 
 const Play = props => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const Play = props => {
 
   return (
     <Container>
-      <p className="title">MUD GAME</p>
+      <h1 className="title">Adventure House</h1>
       <Game>
         <Map>
           <p>Hello</p>
@@ -43,10 +43,10 @@ const Play = props => {
               {props.currentRoom && props.currentRoom.title}
             </strong>
           </p>
-          <ul className='players'>
+          <ul className="players">
             {props.currentRoom && props.currentRoom.players.length
               ? props.currentRoom.players.map(player => <li>{player}</li>)
-              : "No players in this room"}
+              : 'No players in this room'}
           </ul>
         </Room>
         <Nav>
@@ -61,12 +61,12 @@ const Play = props => {
 
 const mapStateToProps = state => ({
   currentRoom: state.currentRoom,
-  token: state.token
+  token: state.token,
 });
 
 export default connect(
   mapStateToProps,
-  { initialize }
+  { initialize },
 )(Play);
 
 const Container = styled.div`

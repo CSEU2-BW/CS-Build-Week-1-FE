@@ -1,6 +1,5 @@
 import axios from "axios";
-const __BASE_URL__ = 'https://mudgame.herokuapp.com/api'
-
+const __BASE_URL__ = "https://mudgame.herokuapp.com/api";
 
 export const REGISTERING_USER = "REGISTERING_USER";
 export const REGISTERING_USER_SUCCESS = "REGISTERING_USER_SUCCESS";
@@ -36,10 +35,11 @@ export const registerUser = props => {
     axios
       .post(`${__BASE_URL__}/registration/`, newUser)
       .then(res => {
+		localStorage.setItem("token", res.data.key);
         dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.key });
       })
       .catch(error => {
-        dispatch({ type: REGISTERING_USER_FAILURE, payload: error.message });
+        dispatch({ type: REGISTERING_USER_FAILURE, payload: error.response.data });
       });
   };
 };
@@ -51,7 +51,7 @@ export const logInUser = props => {
     axios
       .post(`${__BASE_URL__}/login/`, existingUser)
       .then(res => {
-        localStorage.setItem('token', res.data.key);
+        localStorage.setItem("token", res.data.key);
         dispatch({
           type: LOGGING_IN_USER_SUCCESS,
           payload: {
@@ -60,7 +60,7 @@ export const logInUser = props => {
         });
       })
       .catch(error => {
-        dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.message });
+        dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.response.data });
       });
   };
 };
@@ -82,10 +82,9 @@ export const initialize = () => dispatch => {
           ...res.data
         }
       });
-      console.log(res.data);
     })
     .catch(error => {
-      dispatch({ type: INITIALIZING_FAILURE, payload: error.message });
+      dispatch({ type: INITIALIZING_FAILURE, payload: error.response.data});
     });
 };
 
@@ -110,15 +109,13 @@ export const fetchingRooms = () =>
         // console.log(res.data);
       })
       .catch(error => {
-        console.log(error);
-        dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.message });
+        dispatch({ type: FETCHING_ROOMS_FAILURE, payload: error.response.data });
       });
   };
 
 // https://lambda-mud-test.herokuapp.com/api/adv/fetch_rooms/
 
 export const navigateRooms = direction => dispatch => {
-  console.log(direction);
   dispatch({ type: NAVIGATE });
 
   const token = localStorage.getItem("token");
@@ -137,6 +134,6 @@ export const navigateRooms = direction => dispatch => {
       });
     })
     .catch(error => {
-      dispatch({ type: NAVIGATE_FAILURE, payload: error.message });
+      dispatch({ type: NAVIGATE_FAILURE, payload: error.response.data });
     });
 };

@@ -13,7 +13,6 @@ export const Login = (props) => {
       password: passRef.current.value,
     };
     props.logInUser(existingUser);
-    localStorage.setItem('token', props.token);
     nameRef.current.value = '';
     passRef.current.value = '';
   };
@@ -23,14 +22,15 @@ export const Login = (props) => {
   return (
     <StyledContainer>
       <h2>Welcome To The House! Login</h2>
-      <StyledInput type="text" placeholder="username" ref={nameRef} />
+      <StyledInput type="text" placeholder="username" ref={nameRef} required/>
 
-      <StyledInput type="password" placeholder="password" ref={passRef} />
+      <StyledInput type="password" placeholder="password" ref={passRef} required/>
 
       <StyledButton type="submit" onClick={onLogIn}>
         Log In
       </StyledButton>
       <p>
+      {props.error && props.error.password1.map((error, i) => toast(<Err key={i} >{error}</Err>))}
 New to Adventure House?
         <OtherAction onClick={() => props.started()}>Register</OtherAction>
       </p>
@@ -91,7 +91,7 @@ const OtherAction = styled.button`
     border-radius:5px;
   }
 `;
-const mapStateToProps = ({ token }) => ({ token });
+const mapStateToProps = ({error }) => ({ error });
 
 
 export default connect(mapStateToProps, { logInUser })(Login);
