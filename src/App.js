@@ -12,17 +12,17 @@ import Map from './components/map/Map';
 function App(props) {
   return (
     <div>
-      <div>
+      {/* <div>
         {!props.isLoggedIn && <Register {...props} />}
         {!props.isLoggedIn && <Login {...props} />}
-      </div>
+      </div> */}
 
       <Map exact path="/map" component={Map} />
 
-      <div>
+      {/* <div>
         {props.isLoggedIn && <Logout {...props} />}
         {props.isLoggedIn && props.token && <Play {...props} />}
-      </div>
+      </div> */}
     </div>
   );
 }

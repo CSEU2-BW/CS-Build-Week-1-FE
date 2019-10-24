@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Rooms from './Rooms';
 
-export class Map extends Component {
+class Map extends Component {
   render() {
-    return <div>Idemooo</div>;
+    return (
+      <div className="map-container">
+        <Rooms />
+      </div>
+    );
   }
 }
 
