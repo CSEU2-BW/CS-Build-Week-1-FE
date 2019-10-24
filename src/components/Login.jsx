@@ -24,6 +24,7 @@ export default function Login(props) {
       <StyledButton type="submit" onClick={onLogIn}>
         Log In
       </StyledButton>
+      <p>New to Adventure House? <button>Register</button></p>
     </StyledContainer>
   );
 }
@@ -33,9 +34,10 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid white;
+  width: 100%;
+  height:50%;
 
-  width: auto;
-  background-color: rgb(255, 183, 82, 0.9);
   color: rgb(3, 84, 16);
 `;
 

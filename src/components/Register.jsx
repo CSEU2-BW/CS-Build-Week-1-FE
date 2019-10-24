@@ -38,7 +38,6 @@ const StyledContainer = styled.div`
   align-items: center;
 
   width: auto;
-  background-color: rgb(255, 183, 82, 0.9);
   color: rgb(3, 84, 16);
   margin-bottom: 2rem;
 `;
