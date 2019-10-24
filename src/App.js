@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
@@ -103,8 +104,8 @@ function App(props) {
      
       )}
     </Container>
-  );
-}
+
+
 
 function mapStateToProps(state) {
   return {
