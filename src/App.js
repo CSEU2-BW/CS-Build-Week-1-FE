@@ -53,26 +53,30 @@ function App(props) {
   const [current, setCurrent] = useState({
     started: false,
     show: false,
-    registered: false
+    registered: false,
   });
   const getStarted = () => {
     setCurrent({
       ...current,
-      started: true
+      started: true,
     });
   };
   const setModal = () => {
     setCurrent({
       ...current,
-      registered: !current.registered
+      registered: !current.registered,
     });
   };
-  const fetch_rooms = () => {
-    props.fetchingRooms();
-  };
+  // const fetch_rooms = () => {
+  //   props.fetchingRooms();
+  // };
   return (
     <Container started={current.started}>
-      <h1>Adventure House</h1>
+      <div>
+        <h1>Adventure House</h1>
+        {props.isLoggedIn && <Logout {...props} />}
+      </div>
+
       {!current.started && (
         <Typed
           strings={[
@@ -89,7 +93,6 @@ function App(props) {
       )}
       {current.started && (
         <ActionDiv>
-          {console.log(current.registered)}
           {!props.isLoggedIn && current.registered && (
             <Register started={setModal} />
           )}
@@ -97,17 +100,7 @@ function App(props) {
             <Login started={setModal} />
           )}
         </ActionDiv>
-        // <button onClick={fetch_rooms} type="submit">
-        //   Fetch Rooms
-        // </button>
-
-        // <Map exact path="/map" {...props.data} />
-
-        // <div>
-        //   {props.isLoggedIn && <Logout {...props} />}
-        //   {props.isLoggedIn && props.token && <Play {...props} />}
-        // </div>
-        // </div>
+     
       )}
     </Container>
   );

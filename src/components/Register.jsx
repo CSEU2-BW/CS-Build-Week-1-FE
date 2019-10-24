@@ -48,6 +48,11 @@ export const Register = (props) => {
       password2: pass2Ref.current.value,
     };
     props.registerUser(newUser);
+    localStorage.setItem('token', props.token);
+    nameRef.current.value=''
+    emailRef.current.value=''
+    pass1Ref.current.value=''
+    pass2Ref.current.value=''
   };
 
   return (

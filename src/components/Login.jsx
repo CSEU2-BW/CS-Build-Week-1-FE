@@ -13,6 +13,9 @@ export const Login = (props) => {
       password: passRef.current.value,
     };
     props.logInUser(existingUser);
+    localStorage.setItem('token', props.token);
+    nameRef.current.value = '';
+    passRef.current.value = '';
   };
 
   // console.log(props.key);
@@ -88,6 +91,7 @@ const OtherAction = styled.button`
     border-radius:5px;
   }
 `;
+const mapStateToProps = ({ token }) => ({ token });
 
 
-export default connect(null, { logInUser })(Login);
+export default connect(mapStateToProps, { logInUser })(Login);
