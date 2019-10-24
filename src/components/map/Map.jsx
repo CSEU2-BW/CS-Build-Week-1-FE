@@ -5,7 +5,7 @@ function Map(props) {
   console.log(props)
   return (
     <div className="map-container">
-      <Rooms />
+      <Rooms {...props} />
 
 
     </div>

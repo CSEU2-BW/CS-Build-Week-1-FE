@@ -90,10 +90,12 @@ export const initialize = token => {
 export const fetchingRooms = () => {
   return function(dispatch) {
     dispatch({ type: FETCHING_ROOMS });
-    axios
-      .get(`${__BASE_URL__}/adv/init/fetch_rooms`, {
-        headers: { Authorization: 'd34eacdea490b588ec35bed097327e7fa7cb7514' },
-      })
+
+    const token = localStorage.getItem('token');
+    const axiosConfig = token ? { headers: { 'Authorization' : `Token ${token}` } } : null;
+
+    return axios
+      .get(`${__BASE_URL__}/adv/fetch_rooms`, axiosConfig)
       .then(res => {
         dispatch({
           type: FETCHING_ROOMS_SUCCESS,
