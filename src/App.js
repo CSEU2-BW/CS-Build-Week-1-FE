@@ -1,27 +1,63 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
+import styled from "styled-components";
 import * as actions from "./actions/index";
-import Login from "./components/Login";
 import RestrictedRoute from "./HOCs/RestrictedRoute";
-import Register from "./components/Register";
-import Play from "./components/Play";
 import Logout from "./components/Logout";
 import Map from "./components/map/Map";
+import Home from "./views/home";
+import Play from "./views/Play";
+import Register from "./views/register";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+  }
+`;
+const WithHoc = RestrictedRoute(Play);
 
 function App(props) {
+  // const getStarted = () => {
+  //   setCurrent({
+  //     ...current,
+  //     started: true,
+  //   });
+  // };
+  // const setModal = () => {
+  //   setCurrent({
+  //     ...current,
+  //     registered: !current.registered,
+  //   });
+  // };
+  // const fetch_rooms = () => {
+  //   props.fetchingRooms();
+  // };
   return (
-    <div>
-      <div>
-        {!props.isLoggedIn && <Register {...props} />}
-        {!props.isLoggedIn && <Login {...props} />}
-      </div>
-
-      <div>
-        {props.isLoggedIn && <Logout {...props} />}
-        {props.isLoggedIn && props.token && <Play {...props} />}
-      </div>
-    </div>
+    <Container>
+      {props.isLoggedIn && <Logout {...props} />}
+      <Route exact path="/" component={Home} />
+      <Route
+        path="/login"
+        render={() => {
+          if (localStorage.getItem("token")) {
+            return <Redirect to="/play" />;
+          }
+          return <Register />;
+        }}
+      />
+      <Route path="/play" component={WithHoc} />
+    </Container>
   );
 }
 

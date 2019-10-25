@@ -20,7 +20,8 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        token: action.payload.key
+        token: action.payload.key,
+        isLoggedIn: true,
       };
     case types.REGISTERING_USER_FAILURE:
       return {

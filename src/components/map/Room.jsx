@@ -9,7 +9,7 @@ function Room(props) {
       s_to={props.room.s_to}
       e_to={props.room.e_to}
       w_to={props.room.w_to}
-      crt={props.currentRoom.title}
+      crt={props.currentRoom && props.currentRoom.title}
       title={props.room.title}
     >
       {props.room.title}
@@ -27,16 +27,19 @@ export default connect(
 )(Room);
 
 const StyledRoom = styled.div`
-  width: 70px;
-  height: 40px;
-  border-top: 4px solid yellowgreen;
-  border-right: 4px solid yellowgreen;
-  border-left: 4px solid yellowgreen;
-  border-bottom: 4px solid yellowgreen;
+  width: 80px;
+  height: 55px;
+  border-top: 4px solid wheat;
+  border-right: 4px solid wheat;
+  border-left: 4px solid wheat;
+  border-bottom: 4px solid wheat;
+  text-align: center;
+  font-family: cursive;
 
-  background-color: ${props => (props.crt === props.title ? "blue" : "yellowgreen")};
-  border-top: ${props => (props.n_to > 0 ? "4px solid yellowgreen" : "4px solid black")};
-  border-bottom: ${props => (props.s_to > 0 ? "4px solid yellowgreen" : "4px solid black")};
-  border-right: ${props => (props.e_to > 0 ? "4px solid yellowgreen" : "4px solid black")};
-  border-left: ${props => (props.w_to > 0 ? "4px solid yellowgreen" : "4px solid black")};
+  background-color: ${props => (props.crt === props.title ? "green" : "wheat")};
+  color: ${props => (props.crt === props.title ? "white" : "black")};
+  border-top: ${props => (props.n_to > 0 ? "4px solid wheat" : "4px solid grey")};
+  border-bottom: ${props => (props.s_to > 0 ? "4px solid wheat" : "4px solid grey")};
+  border-right: ${props => (props.e_to > 0 ? "4px solid wheat" : "4px solid grey")};
+  border-left: ${props => (props.w_to > 0 ? "4px solid wheat" : "4px solid grey")};
 `;
