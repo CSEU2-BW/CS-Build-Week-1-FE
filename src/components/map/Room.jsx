@@ -28,7 +28,7 @@ export default connect(
 
 const StyledRoom = styled.div`
   width: 80px;
-  height: 55px;
+  height: 50px;
   border-top: 4px solid wheat;
   border-right: 4px solid wheat;
   border-left: 4px solid wheat;
