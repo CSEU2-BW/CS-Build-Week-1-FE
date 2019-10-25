@@ -37,4 +37,5 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
+  margin: 0 auto;
 `;
