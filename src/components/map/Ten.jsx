@@ -7,7 +7,7 @@ function Ten(props) {
   return (
     <RoomWrapper>
       {props.rooms.map(room => (
-        <Room room={room.title} key={room.id} n={room.n_to} />
+        <Room room={room} key={room.id} />
       ))}
     </RoomWrapper>
   );

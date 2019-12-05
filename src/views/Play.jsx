@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import Navigation from '../components/Navigation';
-import { initialize } from '../actions';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import Navigation from "../components/Navigation";
+import { initialize, fetchingRooms } from "../actions";
+import Map from "../components/map/Map"
 
 const Play = props => {
   useEffect(() => {
     props.initialize(props.token);
+    props.fetchingRooms();
   }, []);
 
   return (
     <Container>
       <h1 className="title">Adventure House</h1>
       <Game>
-        <Map>
-          <p>Hello</p>
-        </Map>
+        <MapWrapper>
+          {props.data && <Map exact path="/map" {...props.data} />}
+        </MapWrapper>
         <Room>
           <p>
             Hello, &nbsp;
@@ -62,11 +64,12 @@ const Play = props => {
 const mapStateToProps = state => ({
   currentRoom: state.currentRoom,
   token: state.token,
+  data: state.data
 });
 
 export default connect(
   mapStateToProps,
-  { initialize },
+  { initialize, fetchingRooms },
 )(Play);
 
 const Container = styled.div`
@@ -90,7 +93,7 @@ const Game = styled.div`
   border: 2px darkgreen solid;
 `;
 
-const Map = styled.div`
+const MapWrapper = styled.div`
   width: 75%;
   height: 75vh;
   box-sizing: border-box;
