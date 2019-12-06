@@ -44,6 +44,10 @@ const ActionDiv = styled.div`
   margin-top: 10%;
   width: 30%;
   height: 100%;
+  @media(max-width:500px){
+    width:80%;
+    margin-left:0%;
+  }
 `;
 
 const Registered = props => {

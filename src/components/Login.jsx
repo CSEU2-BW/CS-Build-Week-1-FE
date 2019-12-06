@@ -49,6 +49,12 @@ const StyledContainer = styled.form`
   opacity:0.8;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   color: rgb(3, 84, 16);
+  @media(max-width:500px){
+    height:100%;
+    h2{
+      font-size:1rem;
+    }
+  }
 `;
 
 const StyledInput = styled.input`
@@ -65,6 +71,8 @@ const StyledInput = styled.input`
     font-size:1rem;
 
   }
+  @media(max-width:500px){
+    padding:0.2rem;}
 `;
 
 const StyledButton = styled.input`
@@ -77,6 +85,10 @@ const StyledButton = styled.input`
   width:5rem;
   height:3rem;
   color:white;
+  @media(max-width:500px){
+    height:2rem;
+  
+  }
 `;
 const OtherAction = styled.button`
   width:5rem;
