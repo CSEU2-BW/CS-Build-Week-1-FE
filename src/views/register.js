@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import SignIn from '../components/Login';
 import SignUp from '../components/Register';
 import Background2 from '../assests/opened.jpg';
-import { ToastContainer } from 'react-toastify';
 
 const Container = styled.div`
   width: 100%;
@@ -19,8 +18,14 @@ const Container = styled.div`
   align-items: center;
   h1 {
     color: white;
-    font-size: 3em;
+    font-size: 3rem;
     text-align: center;
+    @media(max-height:400px){
+      font-size:2rem;
+    }
+    @media(max-width:500px){
+      font-size:2.5rem;
+    }
   }
   .error{
     color:red;
@@ -36,18 +41,46 @@ const Container = styled.div`
     text-decoration:none;
     font-size:1rem;
     padding:1rem;
+    @media(max-height:400px){
+      width:40%;
+      margin-top:65%;
+    }
 }
 `;
 
 const ActionDiv = styled.div`
-  margin-left: 40%;
+  margin-left: 30%;
   margin-top: 10%;
-  width: 30%;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  width:60%;
   height: 100%;
   @media(max-width:500px){
     width:80%;
+    flex-direction:column;
     margin-left:0%;
   }
+  @media(max-height:400px){
+    height:90%;
+    width:58%;
+    flex-direction:row-reverse;
+    margin-top:0%;
+    h2{
+      font-size:1rem;
+    }
+    clip-path:none;
+  }
+`;
+const Form = styled.div`
+  width:55%;
+  height:100%;
+  @media(max-width:500px){
+    width:100%;
+  }
+@media(max-height:400px){
+  width:100%;
+}
 `;
 
 const Registered = props => {
@@ -57,11 +90,12 @@ const Registered = props => {
     <Container>
       <h1>Adventure House</h1>
       <ActionDiv>
-      <ToastContainer autoClose={3000} position="top-right" className="error" />
+      <Form>
         {!props.isLoggedIn && !registering && <SignIn started={setModal} />}
         {!props.isLoggedIn && registering && <SignUp started={setModal} />}
-      </ActionDiv>
-      <Link to='/'> Go to Home</Link>
+      </Form>
+      <Link to="/"> Go to Home</Link>
+        </ActionDiv>
     </Container>
   );
 };

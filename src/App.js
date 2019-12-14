@@ -19,11 +19,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  h1 {
-    color: white;
-    font-size: 3em;
-    text-align: center;
-  }
+
 `;
 const WithHoc = RestrictedRoute(Play);
 

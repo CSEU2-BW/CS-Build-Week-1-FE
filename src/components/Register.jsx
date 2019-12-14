@@ -34,7 +34,7 @@ export const Register = props => {
       />
       <StyledInput
         type="password"
-        placeholder="password"
+        placeholder="confirm password"
         ref={pass2Ref}
         required
       />
@@ -69,20 +69,43 @@ const StyledContainer = styled.form`
     0% 75%
   );
   color: rgb(3, 84, 16);
-`;
+  @media(max-width:500px){
+    height:100%;
+    h2{
+      font-size:1rem;
+    }
+    clip-path:none;
+  }
+  @media(max-height:400px){
+    height:95%;
+    h2{
+      font-size:1rem;
+    }
+    clip-path:none;
+  }
+
+  `;
 
 const StyledInput = styled.input`
-  font-size: 1.5rem;
+  font-size: 1rem;
   width: 80%;
+  height:6.5%;
   margin: 0.3rem;
   border: 1px solid green;
   background: none;
-  padding: 0.1rem 0.5rem;
+  padding-left:0.8rem;
   border-radius: 5px;
   outline: none;
   &::placeholder {
     color: green;
     font-size: 1rem;
+  }
+  @media(max-width:500px){
+    height:10%;
+  }
+  @media(max-height:400px){
+    margin:0.1rem;
+    height:10%;
   }
 `;
 

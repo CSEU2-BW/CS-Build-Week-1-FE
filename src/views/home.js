@@ -18,7 +18,7 @@ const Container = styled.div`
   justify-content:center;
   h1 {
     color: white;
-    font-size: 3em;
+    font-size: 3rem;
     text-align: center;
   }
   span{
