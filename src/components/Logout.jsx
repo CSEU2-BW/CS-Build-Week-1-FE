@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logOut } from '../actions/index';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 const Logout = props => {
   const onLogOut = () => {
@@ -10,13 +10,21 @@ const Logout = props => {
   };
 
   return (
-    <button type="submit" onClick={onLogOut}>
+    <Button type="submit" onClick={onLogOut}>
       Log Out
-    </button>
+    </Button>
   );
 };
+
 
 export default connect(
   null,
   { logOut },
 )(Logout);
+
+const Button = styled.button`
+  font-size:1rem;
+  height:60%;
+  color:white;
+  background-color:grey;
+`;

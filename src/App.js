@@ -4,7 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import * as actions from "./actions/index";
 import RestrictedRoute from "./HOCs/RestrictedRoute";
-import Logout from "./components/Logout";
 import Map from "./components/map/Map";
 import Home from "./views/home";
 import Play from "./views/Play";
@@ -41,7 +40,7 @@ function App(props) {
   // };
   return (
     <Container>
-      {props.isLoggedIn && <Logout {...props} />}
+    
       <Route exact path="/" component={Home} />
       <Route
         path="/login"

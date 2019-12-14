@@ -1,20 +1,25 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import Navigation from "../components/Navigation";
-import { initialize, fetchingRooms } from "../actions";
-import Map from "../components/map/Map"
+import React, { useEffect , useState } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import Navigation from '../components/Navigation';
+import { initialize, fetchingRooms } from '../actions';
+import Map from '../components/map/Map';
+import Logout from "../components/Logout";
 
 const Play = props => {
   useEffect(() => {
     props.initialize(props.token);
     props.fetchingRooms();
   }, []);
-
+const [roomDetails, showRoomDetails] = useState(false)
   return (
     <Container>
+      <Header>
       <h1 className="title">Adventure House</h1>
-      {/* <p>Room {props.currentRoom && props.currentRoom.title}. See details -></p> */}
+      <Logout /> 
+      </Header>
+      <Par error={props.currentRoom && props.currentRoom.error_msg}> Room {props.currentRoom && props.currentRoom.title}.
+      <button onClick ={()=> showRoomDetails(!roomDetails)}>{roomDetails ? 'Hide details' : 'Show details'} -> </button></Par>
       <GameContainer>
         <Game>
           <MapWrapper>
@@ -24,13 +29,13 @@ const Play = props => {
             <Navigation />
         </Nav>
       </Game>
-      <Room>
+      <Room show={roomDetails}>
           <p>
             Hello, &nbsp;
             <strong>{props.currentRoom && props.currentRoom.name}</strong>
           </p>
           <p>
-            <strong>Location:</strong>
+            <strong>Room:</strong>
             &nbsp;
             {props.currentRoom && props.currentRoom.title}
           </p>
@@ -39,16 +44,15 @@ const Play = props => {
             &nbsp;
             {props.currentRoom && props.currentRoom.description}
           </p>
-          <p>
+          {props.currentRoom && props.currentRoom.error_msg &&  <p>
             <strong>Error:</strong>
             &nbsp;
-            {props.currentRoom && props.currentRoom.error_msg}
-          </p>
+            {props.currentRoom.error_msg}
+          </p>}
           <br />
           <p>
             <strong>
-              List of players in
-              {props.currentRoom && props.currentRoom.title}
+              List of players in {props.currentRoom && props.currentRoom.title}
             </strong>
           </p>
           <ul className="players">
@@ -74,7 +78,7 @@ export default connect(
 )(Play);
 
 const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -83,7 +87,6 @@ const Container = styled.div`
     font-family: monospace;
     text-align: center; 
     color: darkgreen;
-    height:10%;
     margin: 0;
     @media(max-width:500px){
       font-size: 2rem;
@@ -98,6 +101,20 @@ const GameContainer = styled.div`
     flex-direction:column;
   }
 `;
+const Par = styled.p`
+  display:none;
+  @media(max-width:500px){
+    display:flex;
+    justify-content:center;
+    button{
+      outline:none;
+      ${props => (props.error ? `color:red` : `color:green`)};
+      margin:0;
+      border:0;
+      background-color:inherit;
+    }
+  }
+`;
 const Game = styled.div`
   display: flex;
   width:75%;
@@ -107,6 +124,7 @@ const Game = styled.div`
     flex-direction:column;
     width:100%;
     heigth:100%;
+  
   }
 `;
 const MapWrapper = styled.div`
@@ -140,23 +158,50 @@ const Room = styled.div`
   height:100%;
   background: rgb(49, 56, 49);
   color: white;
+  flex-direction:column;
   padding: 1rem;
   box-sizing: border-box;
   height: 100%;
   text-transform: capitalize;
   font-size: 1.4rem;
   font-family: fantasy;
+  @media(max-height:400px){
+    font-size:1rem;
+    p{
+      margin:0;
+    }
+  }
   @media(max-width:500px){
-   display:none;
+  ${props => (props.show ? `display:flex` : `display:none`)};
    width:100%;
-   height:30%;
-
-   flex-wrap:wrap;
+  height:85%;
+  position:fixed;
+  top:15%;
    font-size:1rem;
    p{
      margin:0;
      padding;0;
    }
 
+  }
+`;
+const Header = styled.div`
+display:flex;
+  width:100%;
+  height:10%;
+  h1{
+    width:90%;
+    @media(max-width:500px){
+      width:76%;
+    }
+  }
+  button{
+    width:10%;
+    @media(max-width:500px){
+      width:24%;
+    }
+    @media(max-height:400px){
+      width:24%;
+    }
   }
 `;
