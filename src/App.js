@@ -4,7 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import * as actions from "./actions/index";
 import RestrictedRoute from "./HOCs/RestrictedRoute";
-import Logout from "./components/Logout";
 import Map from "./components/map/Map";
 import Home from "./views/home";
 import Play from "./views/Play";
@@ -19,11 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  h1 {
-    color: white;
-    font-size: 3em;
-    text-align: center;
-  }
+
 `;
 const WithHoc = RestrictedRoute(Play);
 
@@ -45,7 +40,7 @@ function App(props) {
   // };
   return (
     <Container>
-      {props.isLoggedIn && <Logout {...props} />}
+    
       <Route exact path="/" component={Home} />
       <Route
         path="/login"

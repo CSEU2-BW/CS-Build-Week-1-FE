@@ -32,10 +32,9 @@ function Rooms(props) {
 export default Rooms;
 
 const Wrapper = styled.div`
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column-reverse;
-  margin: 0 auto;
+  margin: 0;
 `;

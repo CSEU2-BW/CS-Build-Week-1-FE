@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { logInUser } from '../actions/index';
-import {toast} from 'react-toastify'
 
 export const Login = (props) => {
   const nameRef = React.createRef();
@@ -31,7 +30,6 @@ export const Login = (props) => {
       <StyledButton type="submit" value="Login" />
 
       <p>
-      {props.error && props.error.data.non_field_errors.map((error, i) => toast(<p key={i}>{error}</p>))}
 New to the House?
         <OtherAction onClick={() => props.started()}>Register</OtherAction>
       </p>
@@ -49,15 +47,30 @@ const StyledContainer = styled.form`
   opacity:0.8;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   color: rgb(3, 84, 16);
+  @media(max-width:500px){
+    height:100%;
+    h2{
+      font-size:1rem;
+    }
+    clip-path:none;
+  }
+  @media(max-height:400px){
+    height:95%;
+    h2{
+      font-size:1rem;
+    }
+    clip-path:none;
+  }
 `;
 
 const StyledInput = styled.input`
-  font-size: 1.5rem;
+  font-size: 1rem;
   width:80%;
+  height:10%;
   margin: 0.5rem;
+  padding-left:0.8rem;
   border:1px solid green;
   background:none;
-  padding:0.5rem;
   border-radius:5px;
   outline:none;
   &::placeholder{
@@ -77,6 +90,10 @@ const StyledButton = styled.input`
   width:5rem;
   height:3rem;
   color:white;
+  @media(max-width:500px){
+    height:2rem;
+  
+  }
 `;
 const OtherAction = styled.button`
   width:5rem;

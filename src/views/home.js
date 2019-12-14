@@ -18,13 +18,17 @@ const Container = styled.div`
   justify-content:center;
   h1 {
     color: white;
-    font-size: 3em;
+    font-size: 3rem;
     text-align: center;
   }
   span{
     height:30vh;
     color:white;
+    text-align:center;
     font-size:1.5rem;
+    @media(max-width:500px){
+      font-size:1.2rem;
+    }
   }
   a{
 
@@ -51,7 +55,7 @@ const Home = () => {
         strings={[
           '<p>There is a lot of adventures awaiting you .....</p>',
           '<p>The only thing holding you back is your fears ....</p>',
-          '<p>Get rid of your fear and get an adventure!'
+          '<p>Get rid of your fear and get an adventure!</p>'
         ]}
         typespeed={100}
         fadeOut
