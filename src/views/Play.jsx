@@ -14,11 +14,17 @@ const Play = props => {
   return (
     <Container>
       <h1 className="title">Adventure House</h1>
-      <Game>
-        <MapWrapper>
+      {/* <p>Room {props.currentRoom && props.currentRoom.title}. See details -></p> */}
+      <GameContainer>
+        <Game>
+          <MapWrapper>
           {props.data && <Map exact path="/map" {...props.data} />}
         </MapWrapper>
-        <Room>
+        <Nav>
+            <Navigation />
+        </Nav>
+      </Game>
+      <Room>
           <p>
             Hello, &nbsp;
             <strong>{props.currentRoom && props.currentRoom.name}</strong>
@@ -51,12 +57,7 @@ const Play = props => {
               : 'No players in this room'}
           </ul>
         </Room>
-        <Nav>
-          <div className="Navigation">
-            <Navigation />
-          </div>
-        </Nav>
-      </Game>
+      </GameContainer>
     </Container>
   );
 };
@@ -77,51 +78,85 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
   .title{
-    font-size: 3.1rem;
+    font-size: 3rem;
     font-family: monospace;
     text-align: center; 
-    color: darkgreen
+    color: darkgreen;
+    height:10%;
     margin: 0;
+    @media(max-width:500px){
+      font-size: 2rem;
+    }
 }
 `;
-
+const GameContainer = styled.div`
+  width:100%;
+  height:100%;
+  display:flex;
+  @media(max-width:500px){
+    flex-direction:column;
+  }
+`;
 const Game = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  border: 2px darkgreen solid;
+  width:75%;
+  height:100%;
+  border: none;
+  @media(max-width:500px){
+    flex-direction:column;
+    width:100%;
+    heigth:100%;
+  }
 `;
-
 const MapWrapper = styled.div`
-  width: 75%;
-  height: 75vh;
+  width: 80%;
+  height: 100%;
   box-sizing: border-box;
+  @media(max-width:500px){
+    width:100%;
+    height:100%;
+  }
 `;
-
 const Nav = styled.div`
-  width: 100%;
-  height: 15vh;
-  border-top: 2px darkgreen solid;
+  width: 20%;
+  height: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:none;
   background: gray;
-
-  .Navigation {
-    width: 75%;
+  @media(max-width:500px){
+    justify-content:flex-start;
+    width:100%;
+    height:10%;
   }
 `;
 
+
 const Room = styled.div`
   width: 25%;
+  display:flex;
+  height:100%;
   background: rgb(49, 56, 49);
   color: white;
   padding: 1rem;
   box-sizing: border-box;
-  height: 75vh;
+  height: 100%;
   text-transform: capitalize;
   font-size: 1.4rem;
   font-family: fantasy;
+  @media(max-width:500px){
+   display:none;
+   width:100%;
+   height:30%;
 
-  .players{
-    overflow-y: scroll;
+   flex-wrap:wrap;
+   font-size:1rem;
+   p{
+     margin:0;
+     padding;0;
+   }
+
   }
 `;

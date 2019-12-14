@@ -16,8 +16,9 @@ function Ten(props) {
 export default Ten;
 
 const RoomWrapper = styled.div`
-  width: 1100px;
+  width: 100%;
+  height:10%;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  margin:0;
+  padding:0;
 `;
