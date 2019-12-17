@@ -12,6 +12,7 @@ import Register from "./views/register";
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  min-height:100%;
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
