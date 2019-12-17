@@ -70,14 +70,14 @@ const StyledContainer = styled.form`
   );
   color: rgb(3, 84, 16);
   @media(max-width:500px){
-    height:100%;
+    height:60vh;
     h2{
       font-size:1rem;
     }
     clip-path:none;
   }
   @media(max-height:400px){
-    height:95%;
+    height:77vh;
     h2{
       font-size:1rem;
     }

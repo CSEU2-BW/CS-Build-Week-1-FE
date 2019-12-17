@@ -48,14 +48,14 @@ const StyledContainer = styled.form`
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   color: rgb(3, 84, 16);
   @media(max-width:500px){
-    height:100%;
+    height:60vh;
     h2{
       font-size:1rem;
     }
     clip-path:none;
   }
   @media(max-height:400px){
-    height:95%;
+    height:77vh;;
     h2{
       font-size:1rem;
     }
