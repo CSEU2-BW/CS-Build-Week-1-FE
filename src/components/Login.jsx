@@ -55,7 +55,7 @@ const StyledContainer = styled.form`
     clip-path:none;
   }
   @media(max-height:400px){
-    height:95%;
+    height:95%;;
     h2{
       font-size:1rem;
     }
