@@ -42,13 +42,12 @@ const StyledContainer = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height:90%;
+  height:100%;
   background:#e2e2e2;
   opacity:0.8;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
   color: rgb(3, 84, 16);
   @media(max-width:500px){
-    height:100%;
     h2{
       font-size:1rem;
     }
