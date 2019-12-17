@@ -68,7 +68,7 @@ const ActionDiv = styled.div`
     margin-left:0%;
   }
   @media(max-height:400px){
-    height:90%;
+    height:85%;
     width:58%;
     flex-direction:row-reverse;
     margin-top:0%;
