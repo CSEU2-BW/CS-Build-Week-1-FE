@@ -17,7 +17,6 @@ const Container = styled.div`
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-color:yellow;
   display: flex;
   flex-direction: column;
   align-items: center;

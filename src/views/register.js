@@ -9,6 +9,7 @@ import Background2 from '../assests/opened.jpg';
 const Container = styled.div`
   width: 100%;
   height:100%;
+  position:absolute;
   background: url(${Background2});
   background-size: 100% 100%;
   background-position: center;
@@ -74,7 +75,7 @@ const ActionDiv = styled.div`
 `;
 const Form = styled.div`
   width:55%;
-  height:100%;
+  height:90%;
   @media(max-width:500px){
     width:100%;
   }
