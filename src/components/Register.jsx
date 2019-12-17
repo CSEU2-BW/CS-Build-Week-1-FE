@@ -70,14 +70,14 @@ const StyledContainer = styled.form`
   );
   color: rgb(3, 84, 16);
   @media(max-width:500px){
-    height:60vh;
+    height:100%;
     h2{
       font-size:1rem;
     }
     clip-path:none;
   }
   @media(max-height:400px){
-    height:77vh;
+    height:95%;
     h2{
       font-size:1rem;
     }
@@ -95,7 +95,6 @@ const StyledInput = styled.input`
   background: none;
   padding-left:0.8rem;
   border-radius: 5px;
-  outline: none;
   &::placeholder {
     color: green;
     font-size: 1rem;
@@ -114,6 +113,7 @@ const StyledSubmit = styled.input`
   margin: 0.3rem 0.5rem;
   margin-bottom: 0.02rem;
   outline: none;
+  border:none;
   background-color: green;
   font-size: 1rem;
   border-radius: 5px;

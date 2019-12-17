@@ -16,6 +16,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media(max-width:500px){
+      height:100vh;
+  }
+  @media(max-height:400px){
+    height:100vh;
+  }
   h1 {
     color: white;
     font-size: 3rem;
