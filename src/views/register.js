@@ -50,7 +50,7 @@ const Container = styled.div`
 `;
 
 const ActionDiv = styled.div`
-  margin-left: 30%;
+  margin-left: 20%;
   margin-top: 10%;
   display:flex;
   align-items:center;
