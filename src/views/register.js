@@ -8,8 +8,7 @@ import Background2 from '../assests/opened.jpg';
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
-  height:100vh;
+  height:100%;
   background: url(${Background2});
   background-size: 100% 100%;
   background-position: center;
@@ -17,7 +16,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   h1 {
     color: white;
     font-size: 3rem;
